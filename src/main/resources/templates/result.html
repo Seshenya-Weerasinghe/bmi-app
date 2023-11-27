@@ -1,0 +1,17 @@
+<!--author - Seshenya Weerasinghe-->
+<!--date - 07.11.2023-->
+<!--matriculation number - 1454176-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI</title>
+</head>
+<body>
+<div class="container text-right" style="max-width: 600px; margin: 0 auto;">
+    <h1 style="font-family: Arial, sans-serif; font-size: 24px">BMI Result for <span th:text="${bmiBean.name}"></span></h1>
+    <p><strong>BMI Value:</strong> <span th:text="${bmiBean.bmiValue}"></span></p>
+</div>
+</body>
+</html>

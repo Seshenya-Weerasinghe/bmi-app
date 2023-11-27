@@ -1,0 +1,64 @@
+<!--author - Seshenya Weerasinghe-->
+<!--date - 07.11.2023-->
+<!--matriculation number - 1454176-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>BMI Calculator</title>
+</head>
+<body>
+<div class="container text-right" style="max-width: 600px; margin: 0 auto;">
+    <h1 class="text-center">BMI Calculator</h1>
+
+    <form action="/calculate" method="post">
+        <div class="mb-3 row">
+            <label for="name" class="col-sm-3 col-form-label">Name:</label>
+            <div class="col-sm-9">
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+        </div>
+        <br></br>
+        <div class="mb-3 row">
+            <label for="height" class="col-sm-3 col-form-label">Height (cm):</label>
+            <div class="col-sm-9">
+                <input type="number" id="height" name="height" class="form-control" required>
+            </div>
+        </div>
+        <br></br>
+        <div class="mb-3 row">
+            <label for="weight" class="col-sm-3 col-form-label">Weight (kg):</label>
+            <div class="col-sm-9">
+                <input type="number" id="weight" name="weight" class="form-control" required>
+            </div>
+        </div>
+        <br></br>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Calculate BMI</button>
+        </div>
+    </form>
+</div>
+<div class="container text-center" style="max-width: 600px; margin: 0 auto;">
+    <h2 class="text-center">BMI Data List</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th class="text-center">Name</th>
+            <th class="text-center">Height (cm)</th>
+            <th class="text-center">Weight (kg)</th>
+            <th class="text-center">BMI Value</th>
+            <th class="text-center">Actions</th>
+        </tr>
+        <!-- Loop through the BMI data and display each record -->
+        <tr th:each="bmiBean : ${bmiList}">
+            <td th:text="${bmiBean.name}"></td>
+            <td th:text="${bmiBean.height}"></td>
+            <td th:text="${bmiBean.weight}"></td>
+            <td th:text="${bmiBean.bmiValue}"></td>
+            <td><a th:href="@{'/result?id=' + ${bmiBean.id}}">Details</a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
